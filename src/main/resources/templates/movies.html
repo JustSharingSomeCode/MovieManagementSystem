@@ -22,7 +22,10 @@
             <a th:href="@{/login}" class="btn btn-primary align-self-start">Log in</a>
         </div>
         <div sec:authorize="isAuthenticated()" class="col-4 d-flex justify-content-end">
-            <p sec:authentication="name" class="me-2"></p>
+            <div class="d-flex justify-content-end me-3">
+                <p sec:authentication="name" class="me-1"></p>
+                <span sec:authentication="principal.authorities"></span>
+            </div>
             <a th:href="@{/logout}" class="btn btn-primary align-self-start">Log out</a>
         </div>
     </div>
@@ -49,8 +52,12 @@
                     <div class="mx-auto d-flex justify-content-center mb-1">
                         <span class="badge bg-secondary" th:text="${movie.rating}"></span>
                     </div>
-                    <div class="mx-auto d-flex justify-content-center">
+                    <div class="mx-auto d-flex justify-content-center mb-1">
                         <span class="badge bg-secondary" th:text="|${movie.duration} Mins|"></span>
+                    </div>
+                    <div sec:authorize="hasAuthority('ADMIN')" class="mx-2 mt-2">
+                        <a th:href="@{/movies/edit/{id}(id=${movie.id})}" class="btn btn-primary col-12 mb-2">Update</a>
+                        <a href="" class="btn btn-danger col-12">Delete</a>
                     </div>
                 </div>
             </div>
