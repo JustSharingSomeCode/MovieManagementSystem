@@ -60,4 +60,12 @@ public class MovieController {
 
         return "redirect:/movies";
     }
+
+    @RequestMapping(value = "/movies/delete/{id}", method = RequestMethod.POST)
+    public String deleteMovie(@PathVariable int id)
+    {
+        movieService.deleteMovieById(id);
+
+        return "redirect:/movies";
+    }
 }

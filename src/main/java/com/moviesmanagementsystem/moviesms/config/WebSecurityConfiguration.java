@@ -38,6 +38,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 //.and().httpBasic()
                 .and().formLogin().permitAll()
+                .defaultSuccessUrl("/movies", true)
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
