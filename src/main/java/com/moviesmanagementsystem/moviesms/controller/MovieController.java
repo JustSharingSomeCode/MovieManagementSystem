@@ -68,4 +68,13 @@ public class MovieController {
 
         return "redirect:/movies";
     }
+
+    @RequestMapping(value = "/movies/score/{id}", method = RequestMethod.GET)
+    public String movieScore(@PathVariable int id, Model model)
+    {
+        Movie movie = movieService.getMovieById(id);
+        model.addAttribute("movie", movie);
+
+        return "movie_score";
+    }
 }

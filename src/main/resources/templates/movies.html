@@ -46,28 +46,31 @@
     <br>
     <div class="row d-flex justify-content-center">
         <th:block th:each="movie: ${movies}">
-            <div class="col-8 col-sm-6 col-md-6 col-lg-3 p-2 d-flex">
-                <div class="col-12 rounded border px-0 pb-2 shadow-sm align-self-stretch">
-                    <div class="box-img">
-                        <img th:src="${movie.img_url}" alt="" class="rounded-top">
-                    </div>
-                    <br>
-                    <h5 th:text="${movie.name}" class="text-center"></h5>
-                    <br>
-                    <div class="mx-auto d-flex justify-content-center mb-1">
-                        <span class="badge bg-secondary" th:text="${movie.rating}"></span>
-                    </div>
-                    <div class="mx-auto d-flex justify-content-center mb-1">
-                        <span class="badge bg-secondary" th:text="|${movie.duration} Mins|"></span>
-                    </div>
-                    <div sec:authorize="hasAuthority('ADMIN')" class="mx-2 mt-2">
-                        <a th:href="@{/movies/details/{id}(id=${movie.id})}" class="btn btn-primary col-12 mb-2">Update</a>
-                        <form th:action="@{/movies/delete/{id}(id=${movie.id})}" method="post">
-                            <button type="submit" class="btn btn-danger col-12">Delete</button>
-                        </form>
+
+                <div class="col-8 col-sm-6 col-md-6 col-lg-3 p-2 d-flex">
+                    <div class="col-12 rounded border px-0 pb-2 shadow-sm align-self-stretch">
+                        <a th:href="@{/movies/score/{id}(id=${movie.id})}" class="text-decoration-none">
+                            <div class="box-img">
+                                <img th:src="${movie.img_url}" alt="" class="rounded-top">
+                            </div>
+                            <br>
+                            <h5 th:text="${movie.name}" class="text-center"></h5>
+                            <br>
+                            <div class="mx-auto d-flex justify-content-center mb-1">
+                                <span class="badge bg-secondary" th:text="${movie.rating}"></span>
+                            </div>
+                            <div class="mx-auto d-flex justify-content-center mb-1">
+                                <span class="badge bg-secondary" th:text="|${movie.duration} Mins|"></span>
+                            </div>
+                            <div sec:authorize="hasAuthority('ADMIN')" class="mx-2 mt-2">
+                                <a th:href="@{/movies/details/{id}(id=${movie.id})}" class="btn btn-primary col-12 mb-2">Update</a>
+                                <form th:action="@{/movies/delete/{id}(id=${movie.id})}" method="post">
+                                    <button type="submit" class="btn btn-danger col-12">Delete</button>
+                                </form>
+                            </div>
+                        </a>
                     </div>
                 </div>
-            </div>
         </th:block>
     </div>
 </div>
