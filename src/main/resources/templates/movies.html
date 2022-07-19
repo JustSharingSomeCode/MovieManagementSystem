@@ -30,7 +30,7 @@
         </div>
     </div>
     <hr>
-    <div class="row">
+    <div class="row mb-2">
         <form action="">
             <div class="input-group">
                 <input type="text" class="form-control">
@@ -38,11 +38,16 @@
             </div>
         </form>
     </div>
+    <div sec:authorize="hasAuthority('ADMIN')" class="row">
+        <div class="col-12">
+            <a href="" class="btn btn-primary col-12">Add new</a>
+        </div>
+    </div>
     <br>
     <div class="row d-flex justify-content-center">
         <th:block th:each="movie: ${movies}">
-            <div class="col-8 col-sm-6 col-md-4 col-lg-3 p-2">
-                <div class="rounded border px-0 pb-2 shadow-sm">
+            <div class="col-8 col-sm-6 col-md-6 col-lg-3 p-2 d-flex">
+                <div class="col-12 rounded border px-0 pb-2 shadow-sm align-self-stretch">
                     <div class="box-img">
                         <img th:src="${movie.img_url}" alt="" class="rounded-top">
                     </div>
