@@ -56,7 +56,7 @@
                         <span class="badge bg-secondary" th:text="|${movie.duration} Mins|"></span>
                     </div>
                     <div sec:authorize="hasAuthority('ADMIN')" class="mx-2 mt-2">
-                        <a th:href="@{/movies/edit/{id}(id=${movie.id})}" class="btn btn-primary col-12 mb-2">Update</a>
+                        <a th:href="@{/movies/details/{id}(id=${movie.id})}" class="btn btn-primary col-12 mb-2">Update</a>
                         <a href="" class="btn btn-danger col-12">Delete</a>
                     </div>
                 </div>

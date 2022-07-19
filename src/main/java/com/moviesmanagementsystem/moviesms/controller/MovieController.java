@@ -25,7 +25,7 @@ public class MovieController {
         return "movies";
     }
 
-    @RequestMapping(value = "/movies/edit/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/movies/details/{id}", method = RequestMethod.GET)
     public String movieDetails(@PathVariable int id, Model model)
     {
         Movie movie = movieService.getMovieById(id);
@@ -38,6 +38,8 @@ public class MovieController {
     @RequestMapping(value = "/movies/edit/{id}", method = RequestMethod.POST)
     public String editMovie(@PathVariable int id, @ModelAttribute Movie movie, Model model)
     {
-        return "movies";
+        movieService.updateMovie(id, movie);
+
+        return "redirect:/movies";
     }
 }
