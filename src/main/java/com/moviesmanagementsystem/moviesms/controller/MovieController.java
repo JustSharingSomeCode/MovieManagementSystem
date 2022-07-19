@@ -42,4 +42,22 @@ public class MovieController {
 
         return "redirect:/movies";
     }
+
+    @RequestMapping(value = "/movies/new", method = RequestMethod.GET)
+    public String newMovie(Model model)
+    {
+        Movie movie = new Movie();
+
+        model.addAttribute("movie", movie);
+
+        return "admin/add_movie";
+    }
+
+    @RequestMapping(value = "/movies/create", method = RequestMethod.POST)
+    public String addMovie(@ModelAttribute Movie movie)
+    {
+        movieService.saveMovie(movie);
+
+        return "redirect:/movies";
+    }
 }

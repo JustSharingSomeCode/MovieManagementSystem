@@ -40,7 +40,7 @@
     </div>
     <div sec:authorize="hasAuthority('ADMIN')" class="row">
         <div class="col-12">
-            <a href="" class="btn btn-primary col-12">Add new</a>
+            <a th:href="@{/movies/new}" class="btn btn-primary col-12">Add new</a>
         </div>
     </div>
     <br>
