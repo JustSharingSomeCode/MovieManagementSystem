@@ -66,14 +66,14 @@
             <div class="row">
                 <h3>Reviews</h3>
             </div>
-            <th:block>
+            <th:block th:each="score : ${scores}">
                 <div class="rounded border shadow-sm col-12">
                     <div class="row m-3">
                         <h5>Usuario</h5>
                         <hr>
-                        <p>Reseña del usuario</p>
+                        <p th:text="${score.details}"></p>
                         <div class="col-12 d-flex align-items-start">
-                            <p class="me-2">3.0</p>
+                            <p class="me-2" th:text="${score.score}"></p>
                             <i class="bi bi-star-fill"></i>
                         </div>
                     </div>
