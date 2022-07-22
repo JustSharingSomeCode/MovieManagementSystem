@@ -1,9 +1,6 @@
 package com.moviesmanagementsystem.moviesms.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "scores")
@@ -16,9 +13,12 @@ public class Score {
     private int score;
     private String details;
 
-    /*
+
     @ManyToOne
+    @JoinColumn(name = "user_fk", referencedColumnName = "id", insertable = false, updatable = false)
     private User user;
+
+    /*
 
     @ManyToOne
     private Movie movie;*/
@@ -62,7 +62,7 @@ public class Score {
     public void setDetails(String details) {
         this.details = details;
     }
-/*
+
     public User getUser() {
         return user;
     }
@@ -70,7 +70,7 @@ public class Score {
     public void setUser(User user) {
         this.user = user;
     }
-
+/*
     public Movie getMovie() {
         return movie;
     }

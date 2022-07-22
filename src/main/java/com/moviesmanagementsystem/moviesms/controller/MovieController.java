@@ -81,11 +81,6 @@ public class MovieController {
         List<Score> scores = movie.getScores();
         model.addAttribute("scores", scores);
 
-        for(int i = 0; i < scores.size(); i++)
-        {
-            System.out.println(scores.get(i).getDetails());
-        }
-
         return "movie_score";
     }
 }
