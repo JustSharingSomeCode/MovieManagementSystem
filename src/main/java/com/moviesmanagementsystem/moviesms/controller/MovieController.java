@@ -1,6 +1,7 @@
 package com.moviesmanagementsystem.moviesms.controller;
 
 import com.moviesmanagementsystem.moviesms.model.Movie;
+import com.moviesmanagementsystem.moviesms.model.Score;
 import com.moviesmanagementsystem.moviesms.service.MovieService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.List;
 
 @Controller
 public class MovieController {
@@ -74,6 +77,14 @@ public class MovieController {
     {
         Movie movie = movieService.getMovieById(id);
         model.addAttribute("movie", movie);
+
+        List<Score> scores = movie.getScores();
+        model.addAttribute("scores", scores);
+
+        for(int i = 0; i < scores.size(); i++)
+        {
+            System.out.println(scores.get(i).getDetails());
+        }
 
         return "movie_score";
     }

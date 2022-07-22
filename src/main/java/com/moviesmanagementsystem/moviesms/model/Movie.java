@@ -1,8 +1,7 @@
 package com.moviesmanagementsystem.moviesms.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "movies")
@@ -15,6 +14,10 @@ public class Movie {
     private String rating;
     private int duration;
     private String img_url;
+
+    @OneToMany
+    @JoinColumn(name = "movie_fk")
+    private List<Score> scores;
 
     public int getId() {
         return id;
@@ -62,5 +65,13 @@ public class Movie {
 
     public void setImg_url(String img_url) {
         this.img_url = img_url;
+    }
+
+    public List<Score> getScores() {
+        return scores;
+    }
+
+    public void setScores(List<Score> scores) {
+        this.scores = scores;
     }
 }
