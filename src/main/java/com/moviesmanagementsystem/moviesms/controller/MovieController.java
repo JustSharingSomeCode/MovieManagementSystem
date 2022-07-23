@@ -81,6 +81,9 @@ public class MovieController {
         List<Score> scores = movie.getScores();
         model.addAttribute("scores", scores);
 
+        Score score = new Score();
+        model.addAttribute("review", score);
+
         return "movie_score";
     }
 }
