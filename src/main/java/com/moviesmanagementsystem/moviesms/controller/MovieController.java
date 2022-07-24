@@ -3,6 +3,8 @@ package com.moviesmanagementsystem.moviesms.controller;
 import com.moviesmanagementsystem.moviesms.model.Movie;
 import com.moviesmanagementsystem.moviesms.model.Score;
 import com.moviesmanagementsystem.moviesms.service.MovieService;
+import com.moviesmanagementsystem.moviesms.userdetails_service.CustomUserDetails;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -73,13 +75,22 @@ public class MovieController {
     }
 
     @RequestMapping(value = "/movies/score/{id}", method = RequestMethod.GET)
-    public String movieScore(@PathVariable int id, Model model)
+    public String movieScore(@PathVariable int id, @AuthenticationPrincipal CustomUserDetails userDetails, Model model)
     {
         Movie movie = movieService.getMovieById(id);
         model.addAttribute("movie", movie);
 
         List<Score> scores = movie.getScores();
         model.addAttribute("scores", scores);
+
+        if(userDetails != null) {
+            for (Score s : scores) {
+                if (s.getUser_fk() == userDetails.getId()) {
+                    model.addAttribute("reviewed", true);
+                    break;
+                }
+            }
+        }
 
         Score score = new Score();
         model.addAttribute("review", score);
