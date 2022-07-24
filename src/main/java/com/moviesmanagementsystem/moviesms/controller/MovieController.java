@@ -7,10 +7,7 @@ import com.moviesmanagementsystem.moviesms.userdetails_service.CustomUserDetails
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,9 +21,15 @@ public class MovieController {
     }
 
     @RequestMapping(value = "/movies", method = RequestMethod.GET)
-    public String listMovies(Model model)
+    public String listMovies(@RequestParam(value = "name", required = false) String name, Model model)
     {
-        model.addAttribute("movies", movieService.getAllMovies());
+        if (name != null && !name.equals(""))
+        {
+            model.addAttribute("movies", movieService.getMovieByName(name));
+        }
+        else {
+            model.addAttribute("movies", movieService.getAllMovies());
+        }
         return "movies";
     }
 

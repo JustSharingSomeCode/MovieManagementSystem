@@ -10,6 +10,8 @@ public interface MovieService {
 
     Movie getMovieById(int id);
 
+    List<Movie> getMovieByName(String name);
+
     Movie saveMovie(Movie movie);
 
     Movie updateMovie(int id, Movie movie);

@@ -3,6 +3,7 @@ package com.moviesmanagementsystem.moviesms.service.impl;
 import com.moviesmanagementsystem.moviesms.model.Movie;
 import com.moviesmanagementsystem.moviesms.repository.MovieRepository;
 import com.moviesmanagementsystem.moviesms.service.MovieService;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +25,11 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public Movie getMovieById(int id) {
         return movieRepository.findById(id).get();
+    }
+
+    @Override
+    public List<Movie> getMovieByName(String name) {
+        return movieRepository.getMovieByName(name);
     }
 
     @Override
