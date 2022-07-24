@@ -23,6 +23,7 @@ public class ScoreController {
     @RequestMapping(value = "/scores/create", method = RequestMethod.POST)
     public String addScore(@ModelAttribute Score score, @AuthenticationPrincipal CustomUserDetails userDetails, RedirectAttributes redirectAttributes)
     {
+        score.setId(0);
         score.setUser_fk(userDetails.getId());
 
         System.out.println(score.getId());

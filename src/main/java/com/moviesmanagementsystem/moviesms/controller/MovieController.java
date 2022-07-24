@@ -83,6 +83,14 @@ public class MovieController {
         List<Score> scores = movie.getScores();
         model.addAttribute("scores", scores);
 
+        double stars = 0;
+        for (Score s : scores) {
+            stars += s.getScore();
+        }
+        stars /= scores.size();
+
+        model.addAttribute("stars", stars);
+
         if(userDetails != null) {
             for (Score s : scores) {
                 if (s.getUser_fk() == userDetails.getId()) {
@@ -94,6 +102,12 @@ public class MovieController {
 
         Score score = new Score();
         model.addAttribute("review", score);
+
+        System.out.println(score.getId());
+        System.out.println(score.getUser_fk());
+        System.out.println(score.getMovie_fk());
+        System.out.println(score.getScore());
+        System.out.println(score.getDetails());
 
         return "movie_score";
     }

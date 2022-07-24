@@ -58,7 +58,7 @@
         <div class="col-sm-12 col-md-6 col-lg-8">
             <div class="row mt-2">
                 <div class="col-12 d-flex align-items-start">
-                    <h3 class="me-2">3.0</h3>
+                    <h3 class="me-2" th:text="${stars}"></h3>
                     <i class="bi bi-star-fill"></i>
                 </div>
             </div>
@@ -87,6 +87,7 @@
                         <form th:action="@{/scores/create}" th:object="${review}" method="post">
                             <input type="hidden"
                                    name="movie_fk"
+                                   id="movie_fk"
                                    th:value="${movie.id}">
                             <div class="form-group mb-2">
                                 <label>Details</label>

@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Score {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int user_fk;
     private int movie_fk;
